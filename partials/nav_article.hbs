@@ -1,0 +1,28 @@
+<!--article-->
+<div class="media">
+    <a href="/" class="pull-left">
+        <!--article image-->
+        <img src="/images/blog/article-min-7.png" alt="miniature-article" />
+    </a>
+
+    <div class="media-body">
+
+        <!--article title-->
+        <a href="/blog/{{ slug }}">
+          <h4 class="media-heading">
+            {{ title }}
+
+            {{#if isNew}}<span class="label label-default">New</span>{{/if}}
+          </h4>
+        </a>
+
+        <!--article category-->
+        <p class="article-category">{{ category }}</p>
+
+        <!--article date-->
+        <p class="article-date">{{ date }}</p>
+
+        <!--article short description-->
+        <p class="article-description">{{ description }}</p>
+    </div>
+</div>
