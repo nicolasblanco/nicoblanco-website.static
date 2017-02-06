@@ -1,6 +1,16 @@
 
-# static-site
+# nicolasblan.co
 
-This example uses Metalsmith to make a static site. To test it out yourself just run:
+This project builds and deploys my website (http://nicolasblan.co).
 
-    $ make build
+To install dependencies :
+
+    npm install
+
+To build and test locally via a local server:
+
+    make
+
+To build and synchronize on the S3 bucket:
+
+    NODE_ENV=production make
