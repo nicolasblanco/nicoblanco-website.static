@@ -1,70 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    <meta charset="utf-8">
-    <title>Nicolas Blanco - Freelance Ruby on Rails developer</title>
-    <!-- <link rel="icon" type="image/png" href="img/favicon.png"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Enthusiast Ruby on Rails freelance Web developer who loves Agile methodologies.">
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css" />
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-15322489-6', 'auto');
-      ga('send', 'pageview');
-    </script>
-
-    </head>
+    {{> head }}
     <body class="">
         <div class="container" id="container">
-          <div class="row top">
-              <div class="col-lg-8 col-md-8 col-sm-7 col-left">
-                  <div class="name"><a href="/">Nicolas Blanco</a></div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-sm-5 col-right">
-                  <nav>
-                      <ul class="list-inline" id="menu">
-                          <li class="">
-                              <a href="/">work</a>
-                          </li>
-                          <li class="">
-                              <a href="/blog">blog</a>
-                          </li>
-                          <li>
-                              <a href="mailto:nicolas@nicolasblanco.fr">contact</a>
-                          </li>
-                          <li class="last">
-                              <a href="https://twitter.com/nblanco_fr"><img src="/images/icon/icon-twitter.png" class="social" alt="twitter" /></a>
-                              <a href="https://uk.linkedin.com/in/nicolasblanco"><img src="/images/icon/icon-linkedin.png" class="social" alt="linkedin" /></a>
-                              <a href="https://github.com/nicolasblanco"><img src="/images/icon/icon-github.png" class="social" alt="github" /></a>
-                          </li>
-                      </ul>
-                  </nav>
-              </div>
-          </div>
+          {{> nav_bar workSection=true }}
 
           {{{ contents }}}
         </div>
 
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-                integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-                crossorigin="anonymous">
-        </script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-                crossorigin="anonymous">
-        </script>
-        <script src="/js/plugins/fastclick/fastclick.js"></script>
-        <script src="/js/plugins/smooth-scroll/jquery.smooth-scroll.min.js"></script>
-        <script src="/js/plugins/mixitup/jquery.mixitup.min.js"></script>
-        <script src="/js/main.js"></script>
+        {{> js }}
 
     </body>
 </html>

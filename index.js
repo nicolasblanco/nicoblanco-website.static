@@ -5,6 +5,10 @@ var permalinks  = require('metalsmith-permalinks');
 var sass        = require('metalsmith-sass');
 var s3          = require('metalsmith-s3');
 var msIf        = require('metalsmith-if');
+var partials    = require('metalsmith-discover-partials');
+var redirect    = require('metalsmith-redirect');
+
+const latestArticleSlug = 'beautify-your-rails-confirm-boxes-in-a-few-seconds';
 
 Metalsmith(__dirname)
   .metadata({
@@ -18,11 +22,15 @@ Metalsmith(__dirname)
   .clean(true)
   .use(markdown())
   .use(permalinks())
+  .use(partials())
   .use(layouts({
     engine: 'handlebars'
   }))
   .use(sass({
     outputDir: 'css/'
+  }))
+  .use(redirect({
+    '/blog': `/blog/${latestArticleSlug}`
   }))
   .use(msIf(
     process.env.NODE_ENV == 'production', s3({
