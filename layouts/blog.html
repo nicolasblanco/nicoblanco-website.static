@@ -24,34 +24,43 @@
 
                   <section class="blog">
 
-                        <!--article-->
-                        <div class="media">
-                            <a href="/" class="pull-left">
-                                <!--article image-->
-                                <img src="/images/blog/article-min-7.png" alt="miniature-article" />
-                            </a>
+                        {{> nav_article
+                          title="Beautify your Rails confirm boxes in a few seconds"
+                          date="06/12/2016"
+                          category="Ruby"
+                          slug="beautify-your-rails-confirm-boxes-in-a-few-seconds"
+                          description="Small advertisement for one of my latest small Rails gem..."
+                          isNew=true
+                        }}
+                        {{> nav_article
+                          title="Developing a wizard or multi-steps forms in Rails"
+                          date="05/12/2016"
+                          category="Rails"
+                          slug="developing-a-wizard-or-multi-steps-forms-in-rails"
+                          description="Develop a form wizard in Rails bound to the session..."
+                        }}
+                        {{> nav_article
+                          title="I'm fed up of your 'coding challenges', here's why..."
+                          date="18/10/2016"
+                          category="Hiring"
+                          slug="im-fed-up-of-your-coding-challenges-heres-why-dot-dot-dot"
+                          description="Since I've returned to Europe a few months ago..."
+                        }}
+                        {{> nav_article
+                          title="Contacting freelance developers : you're doing it wrong"
+                          date="17/08/2015"
+                          category="Freelancer"
+                          slug="contacting-freelance-developers-youre-doing-it-wrong"
+                          description="After almost 3 years of doing freelance web development, I received quite..."
+                        }}
+                        {{> nav_article
+                          title="The Bad and Good way to email a freelance developer for an employee position"
+                          date="17/08/2015"
+                          category="Freelancer"
+                          slug="the-bad-and-good-way-to-email-a-freelance-developer-for-an-employee-position"
+                          description="So you've got an interesting position for a full time employee and spotted a freelance..."
+                        }}
 
-                            <div class="media-body">
-
-                                <!--article title-->
-                                <a href="/blog/beautify-your-rails-confirm-boxes-in-a-few-seconds">
-                                  <h4 class="media-heading">
-                                    Beautify your Rails confirm boxes in a few seconds
-
-                                    <span class="label label-default">New</span>
-                                  </h4>
-                                </a>
-
-                                <!--article category-->
-                                <p class="article-category">Ruby</p>
-
-                                <!--article date-->
-                                <p class="article-date">06/12/2016</p>
-
-                                <!--article short description-->
-                                <p class="article-description">Small advertisement for one of my latest small Rails gem...</p>
-                            </div>
-                        </div>
 
                   </section>
                   <!-- <a class="btn btn-default btn-lg btn-block load-more">Load more</a> -->
