@@ -4,6 +4,7 @@ var layouts     = require('metalsmith-layouts');
 var permalinks  = require('metalsmith-permalinks');
 var sass        = require('metalsmith-sass');
 var s3          = require('metalsmith-s3');
+var msIf        = require('metalsmith-if');
 
 Metalsmith(__dirname)
   .metadata({
@@ -23,11 +24,12 @@ Metalsmith(__dirname)
   .use(sass({
     outputDir: 'css/'
   }))
-  .use(s3({
-    action: 'write',
-    bucket: 'nicolasblan.co',
-    region: 'eu-west-1'
-  }))
+  .use(msIf(
+    process.env.NODE_ENV == 'production', s3({
+      action: 'write',
+      bucket: 'nicolasblan.co',
+      region: 'eu-west-1'
+  })))
   .build(function(err, files) {
     if (err) { throw err; }
   })
