@@ -1,26 +1,29 @@
-var Metalsmith  = require('metalsmith');
-var markdown    = require('metalsmith-markdown');
-var layouts     = require('metalsmith-layouts');
-var permalinks  = require('metalsmith-permalinks');
-var sass        = require('metalsmith-sass');
-var collections = require('metalsmith-collections');
-var s3          = require('metalsmith-s3');
-var msIf        = require('metalsmith-if');
-var partials    = require('metalsmith-discover-partials');
-var redirect    = require('metalsmith-redirect');
-var serve       = require('metalsmith-serve');
-var formatcheck = require('metalsmith-formatcheck');
-var debug       = require('metalsmith-debug');
+'use strict'
 
-const latestArticleSlug = 'beautify-your-rails-confirm-boxes-in-a-few-seconds';
+const Metalsmith    = require('metalsmith')
+const markdown      = require('metalsmith-markdown')
+const layouts       = require('metalsmith-layouts')
+const permalinks    = require('metalsmith-permalinks')
+const sass          = require('metalsmith-sass')
+const collections   = require('metalsmith-collections')
+const s3            = require('metalsmith-s3')
+const msIf          = require('metalsmith-if')
+const partials      = require('metalsmith-discover-partials')
+const redirect      = require('metalsmith-redirect')
+const serve         = require('metalsmith-serve')
+const formatcheck   = require('metalsmith-formatcheck')
+const debug         = require('metalsmith-debug')
+
+const metadata = {
+  title: 'Nicolas Blanco',
+  description: 'The home of a passionate Web architect',
+  generator: 'Metalsmith',
+  url: 'http://nicolasblan.co',
+  last_article_slug: 'beautify-your-rails-confirm-boxes-in-a-few-seconds'
+}
 
 Metalsmith(__dirname)
-  .metadata({
-    title: "Nicolas Blanco",
-    description: "The home of a passionate Web architect",
-    generator: "Metalsmith",
-    url: "http://nicolasblan.co"
-  })
+  .metadata(metadata)
   .source('./src')
   .destination('./build')
   .clean(true)
@@ -41,7 +44,7 @@ Metalsmith(__dirname)
     outputDir: 'css/'
   }))
   .use(redirect({
-    '/blog': `/blog/${latestArticleSlug}`
+    '/blog': `/blog/${metadata.last_article_slug}`
   }))
   //.use(formatcheck({ verbose: true }))
   .use(msIf(
@@ -54,5 +57,5 @@ Metalsmith(__dirname)
       region: 'eu-west-1'
   })))
   .build(function(err, files) {
-    if (err) { throw err; }
+    if (err) { throw err }
   })
