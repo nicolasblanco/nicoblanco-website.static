@@ -7,6 +7,7 @@ var s3          = require('metalsmith-s3');
 var msIf        = require('metalsmith-if');
 var partials    = require('metalsmith-discover-partials');
 var redirect    = require('metalsmith-redirect');
+var serve       = require('metalsmith-serve');
 
 const latestArticleSlug = 'beautify-your-rails-confirm-boxes-in-a-few-seconds';
 
@@ -32,6 +33,9 @@ Metalsmith(__dirname)
   .use(redirect({
     '/blog': `/blog/${latestArticleSlug}`
   }))
+  .use(msIf(
+    process.env.NODE_ENV != 'production', serve()
+  ))
   .use(msIf(
     process.env.NODE_ENV == 'production', s3({
       action: 'write',
