@@ -9,9 +9,7 @@ const collections   = require('metalsmith-collections')
 const s3            = require('metalsmith-s3')
 const msIf          = require('metalsmith-if')
 const partials      = require('metalsmith-discover-partials')
-const redirect      = require('metalsmith-redirect')
 const serve         = require('metalsmith-serve')
-const formatcheck   = require('metalsmith-formatcheck')
 const debug         = require('metalsmith-debug')
 
 const metadata = {
@@ -19,7 +17,6 @@ const metadata = {
   description: 'The home of a passionate Web architect',
   generator: 'Metalsmith',
   url: 'http://nicolasblan.co',
-  last_article_slug: 'beautify-your-rails-confirm-boxes-in-a-few-seconds'
 }
 
 Metalsmith(__dirname)
@@ -43,10 +40,10 @@ Metalsmith(__dirname)
   .use(sass({
     outputDir: 'css/'
   }))
-  .use(redirect({
-    '/blog': `/blog/${metadata.last_article_slug}`
-  }))
-  //.use(formatcheck({ verbose: true }))
+  .use((files, metalsmith, done) => {
+    files['blog/index.html'] = metalsmith.metadata().articles[0]
+    done()
+  })
   .use(msIf(
     process.env.NODE_ENV != 'production', serve()
   ))
